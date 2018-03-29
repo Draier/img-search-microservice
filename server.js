@@ -61,7 +61,7 @@ app.get('/api/:search',(req,res)=>{
 })
 
 app.get('/*', (req,res)=>{
-	res.JSON({xxx: 'Usage : https://young-shore-36691.herokuapp.com/api/<termToSearch>?offset=<startListInX>',
+	res.json({xxx: 'Usage : https://young-shore-36691.herokuapp.com/api/<termToSearch>?offset=<startListInX>',
 		latest : 'You can see the latest searches in https://young-shore-36691.herokuapp.com/api/latest'})
 })
 
