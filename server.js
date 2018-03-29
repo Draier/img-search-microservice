@@ -3,18 +3,11 @@ var request = require('request');
 var moment = require('moment');
 var mongo = require('mongodb').MongoClient;
 var app = express();
-var heroku = 'https://young-shore-36691.herokuapp.com/';
 var cse = 'https://www.googleapis.com/customsearch/v1?q='
 var cx = '&cx=017945690503629750846%3A_r5tyj5a5u0&num=10&searchType=image';
 var num = '&start=';
 var cse2= '&key=AIzaSyDCzT1fcI1TBp-2DhyWg4Z8pmC0_j-5FtA';
 var mongoURL = 'mongodb://admin:admin@ds127899.mlab.com:27899/images'
-
-
-app.get('/', (req,res)=>{
-	res.JSON({xxx: 'Usage : https://young-shore-36691.herokuapp.com/api/<termToSearch>?offset=<startListInX>',
-		latest : 'You can see the latest searches in https://young-shore-36691.herokuapp.com/api/latest'})
-})
 
 app.get('/api/latest/',(req,res)=>{
 	mongo.connect(mongoURL, (err,client)=>{
@@ -66,5 +59,11 @@ app.get('/api/:search',(req,res)=>{
 });
 
 })
+
+app.get('/*', (req,res)=>{
+	res.JSON({xxx: 'Usage : https://young-shore-36691.herokuapp.com/api/<termToSearch>?offset=<startListInX>',
+		latest : 'You can see the latest searches in https://young-shore-36691.herokuapp.com/api/latest'})
+})
+
 app.listen(process.env.PORT || 1337);
 
